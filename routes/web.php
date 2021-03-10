@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,19 +15,20 @@ use App\Http\Controllers\Controller;
 |
 */
 Route::any('/admin/login', [Admin\LoginController::class, 'login']);
-Route::get('/verifycode',[Admin\LoginController::class,'captcha']);
+Route::get('/verifycode', [Admin\LoginController::class, 'captcha']);
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
-Route::match(['get','post'],'/crypt',[Admin\LoginController::class,'crypt1']);
+Route::match(['get', 'post'], '/crypt', [Admin\LoginController::class, 'crypt1']);
 //后台登录中间件判断路由
-Route::get('/test',[Admin\LoginController::class,'test']);
+Route::get('/test', [Admin\LoginController::class, 'test']);
 
 
-Route::group(['middleware' => ['web','login'],'prefix' =>'admin'], function () {
-    Route::get('/index',[Admin\IndexController::class,'index']);
-    Route::get('/info',[Admin\IndexController::class,'info']);
-    Route::get('/logout',[Admin\LoginController::class,'logout']);
-    Route::match(['get','post'],'/passwdreset',[Admin\LoginController::class,'passwdreset']);
+Route::group(['middleware' => ['web', 'login'], 'prefix' => 'admin'], function () {
+	Route::get('/index', [Admin\IndexController::class, 'index']);
+	Route::get('/info', [Admin\IndexController::class, 'info']);
+	Route::get('/logout', [Admin\LoginController::class, 'logout']);
+	Route::match(['get', 'post'], '/passwdreset', [Admin\LoginController::class, 'passwdreset']);
+	Route::any('/content/changeorder', [Admin\CreateController::class, 'order']);
 });
-Route::resource('/admin/contents/index',Admin\CreateController::class);
+Route::resource('/admin/contents/index', Admin\CreateController::class);

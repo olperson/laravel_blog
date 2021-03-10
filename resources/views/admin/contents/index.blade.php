@@ -58,14 +58,14 @@
                     @foreach($data as $v)
                         <tr>
                             <td class="tc">
-                                <input type="text" name="ord[]" value="{{$v->cate_order}}">
+                                <input type="text" onchange="changeOrder(this,{{$v->_id}})" value="{{$v->_order}}">
                             </td>
-                            <td class="tc">{{$v->cate_id}}</td>
+                            <td class="tc">{{$v->_id}}</td>
                             <td>
-                                <a href="#">{{$v->cate_name}}</a>
+                                <a href="#">{{$v->_type}}</a>
                             </td>
-                            <td>{{$v->cate_title}}</td>
-                            <td>{{$v->cate_view}}</td>
+                            <td>{{$v->_title}}</td>
+                            <td>{{$v->_view}}</td>
                             <td>
                                 <a href="#">修改</a>
                                 <a href="#">删除</a>
@@ -107,5 +107,20 @@
         </div>
     </form>
     <!--搜索结果页面 列表 结束-->
-
+    <script>
+        function changeOrder(obj, _id) {
+            var _order = $(obj).val();
+            $.post("{{url('admin/content/changeorder')}}", {
+                '_token': '{{csrf_token()}}',
+                '_id': _id,
+                '_order': _order
+            }, function (data) {
+                if (data.status == 0) {
+                    layer.msg(data.msg, {icon: 6});
+                } else {
+                    layer.msg(data.msg, {icon: 5});
+                }
+            });
+        }
+    </script>
 @endsection
