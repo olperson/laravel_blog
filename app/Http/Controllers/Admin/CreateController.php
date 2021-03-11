@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Content;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
@@ -40,40 +41,72 @@ class CreateController extends Controller
 	}
 	
 	
-	//post.admin/category
-	public function store()
+	//post.admin/create 添加分类提交
+	public function store(Request $request)
 	{
-	
+		$input = $request->except('_token');
+		//写入限制规则
+		$rule = [
+			'_type' => 'required',
+			'_title' => 'required',
+			''
+		];
+		//自定义输出信息
+		$message = [
+			'_type.required' => '分类名称不能为空',
+			'_title.required' => '分类标题不能为空'
+		
+		];
+		$validator = \Illuminate\Support\Facades\Validator::make($input, $rule, $message);
+		if ($validator->passes()) {
+			$re = Content::create($input);
+			if ($re) {
+				
+				return redirect('/admin/contents/index/create');
+			} else {
+				
+				return back()->with('errors', '失败');
+			}
+			
+		} else {
+			return back()->withErrors($validator);
+			
+		}
 	}
 	
-	
-	//get.admin/category/create   添加分类
-	public function create()
-	{
-	
-	}
-	
-	//get.admin/category/{category}  显示单个分类信息
-	public function show()
-	{
-	
-	}
-	
-	//delete.admin/category/{category}   删除单个分类
-	public function destroy()
-	{
-	
-	}
-	
-	//put.admin/category/{category}    更新分类
+	//put.admin/create/{create}    更新分类
 	public function update()
 	{
 	
 	}
 	
-	//get.admin/category/{category}/edit  编辑分类
-	public function edit()
+	//get.admin/create/{create}/edit  编辑分类
+	public function edit($_id)
+	{
+		$content = Content::find($_id);
+		$_name = Content::where('_pid', '0')->get();
+		return view('admin.contents.edit', compact('content', '_name'));
+	}
+	
+	//get.admin/create/create   添加分类
+	public function create()
+	{
+		
+		$_name = Content::where('_pid', '0')->get();
+		return view('admin.contents.add', compact('_name'));
+	}
+	
+	//get.admin/create/{create}  显示单个分类信息
+	public function show()
 	{
 	
 	}
+	
+	//delete.admin/create/{create}   删除单个分类
+	public function destroy()
+	{
+	
+	}
+	
+	
 }
