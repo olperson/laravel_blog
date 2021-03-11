@@ -23,7 +23,7 @@ class Content extends Model
 	
 	public function getTree($data, $file_type, $filed_pid, $filed_id, $pid)
 	{
-		$arr = array();
+		$arr = aarray();
 		//遍历数据并排序
 		foreach ($data as $k => $v) {
 			if ($v->$filed_pid == $pid) {
