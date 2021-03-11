@@ -30,5 +30,5 @@ Route::group(['middleware' => ['web', 'login'], 'prefix' => 'admin'], function (
 	Route::get('/logout', [Admin\LoginController::class, 'logout']);
 	Route::match(['get', 'post'], '/passwdreset', [Admin\LoginController::class, 'passwdreset']);
 	Route::any('/content/changeorder', [Admin\CreateController::class, 'order']);
+	Route::resource('/contents/index', Admin\CreateController::class);
 });
-Route::resource('/admin/contents/index', Admin\CreateController::class);

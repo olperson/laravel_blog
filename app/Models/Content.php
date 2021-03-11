@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +12,7 @@ class Content extends Model
 	protected $table = 'contents';
 	protected $primaryKey = '_id';
 	public $timestamps = false;
+	static $unguarded = true;
 	
 	public function tree()
 	{
@@ -23,7 +23,7 @@ class Content extends Model
 	
 	public function getTree($data, $file_type, $filed_pid, $filed_id, $pid)
 	{
-		$arr = aarray();
+		$arr = array();
 		//遍历数据并排序
 		foreach ($data as $k => $v) {
 			if ($v->$filed_pid == $pid) {
