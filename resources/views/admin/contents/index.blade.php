@@ -67,7 +67,7 @@
                             <td>{{$v->_title}}</td>
                             <td>{{$v->_view}}</td>
                             <td>
-                                <a href="#">修改</a>
+                                <a href="{{url('admin/contents/index/'.$v->_id.'/edit')}}">修改</a>
                                 <a href="#">删除</a>
                             </td>
                         </tr>
