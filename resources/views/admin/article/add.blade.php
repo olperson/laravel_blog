@@ -5,7 +5,7 @@
     <div class="crumb_warp">
         <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
         <i class="fa fa-home"></i>首页 &raquo;
-        <a href="{{url('admin/contents/index')}}">全部分类</a>&raquo;添加文章分类
+        <a href="{{url('admin/contents/index')}}">文章管理</a>&raquo;添加文章
 
     </div>
     <!--面包屑导航 结束-->
@@ -57,19 +57,27 @@
                         <span><i class="fa fa-exclamation-circle yellow"></i>必选</span>
                     </td>
                 </tr>
-                <tr>
-                    <th><i class="require">*</i>分类名称：</th>
-                    <td>
-                        <input type="text" name="_type">
-                        <span><i class="fa fa-exclamation-circle yellow"></i>必填</span>
-                    </td>
-                </tr>
+
                 <tr>
                     <th><i class="require">*</i>标题：</th>
                     <td>
                         <input type="text" class="lg" name="_title">
                     </td>
                 </tr>
+
+                <tr>
+                    <th><i class="require">*</i>缩略图：</th>
+                    <td>
+                        <input type="text" class="lg" name="_title">
+                    </td>
+                </tr>
+                <tr>
+                    <th>作者：</th>
+                    <td>
+                        <input type="text" class="sm" name="_order">
+                        <span><i class="fa fa-exclamation-circle yellow"></i>必填</span>
+                    </td>
+                <tr>
                 <tr>
                     <th>关键词：</th>
                     <td>
@@ -77,23 +85,24 @@
                     </td>
                 </tr>
                 <tr>
+                    <th>描述：</th>
+                    <td>
+                        <textarea class="lg" name="_description"></textarea>
+                    </td>
+                </tr>
+
+                <tr>
                     <th>详细内容：</th>
                     <td>
                         <textarea class="lg" name="_description"></textarea>
                     </td>
                 </tr>
-                <tr>
-                    <th>排序：</th>
-                    <td>
-                        <input type="text" class="sm" name="_order">
-                        <span><i class="fa fa-exclamation-circle yellow"></i>必填</span>
-                    </td>
-                <tr>
-                    <th></th>
-                    <td>
-                        <input type="submit" value="提交">
-                        <input type="button" class="back" onclick="history.go(-1)" value="返回">
-                    </td>
+
+                <th></th>
+                <td>
+                    <input type="submit" value="提交">
+                    <input type="button" class="back" onclick="history.go(-1)" value="返回">
+                </td>
                 </tr>
                 </tbody>
             </table>

@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Content;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\Console\Input\Input;
 
 class CreateController extends Controller
 {
@@ -62,10 +62,10 @@ class CreateController extends Controller
 			$re = Content::create($input);
 			if ($re) {
 				
-				return redirect('/admin/contents/index/create');
+				return back()->with('errors', '新增成功!');
 			} else {
 				
-				return back()->with('errors', '失败');
+				return back()->with('errors', '新增失败!');
 			}
 			
 		} else {
@@ -74,10 +74,13 @@ class CreateController extends Controller
 		}
 	}
 	
-	//put.admin/create/{create}    更新分类
-	public function update()
-	{
 	
+	//get.admin/create/create   添加分类
+	public function create()
+	{
+		
+		$_name = Content::where('_pid', '0')->get();
+		return view('admin.contents.add', compact('_name'));
 	}
 	
 	//get.admin/create/{create}/edit  编辑分类
@@ -88,22 +91,46 @@ class CreateController extends Controller
 		return view('admin.contents.edit', compact('content', '_name'));
 	}
 	
-	//get.admin/create/create   添加分类
-	public function create()
+	//put.admin/create/{create}    更新分类
+	public function update(Request $request, $_id)
 	{
-		
-		$_name = Content::where('_pid', '0')->get();
-		return view('admin.contents.add', compact('_name'));
-	}
-	
-	//get.admin/create/{create}  显示单个分类信息
-	public function show()
-	{
-	
+		$input = $request->except('_token', '_method');
+		$re = Content::where('_id', $_id)->update($input);
+		if ($re) {
+			return back()->with('errors', '更新成功!');
+		} else {
+			return back()->with('errors', '更新数据失败！');
+		}
 	}
 	
 	//delete.admin/create/{create}   删除单个分类
-	public function destroy()
+	public function destroy(Request $request, $_id)
+	{
+		$re = Content::where('_id', $_id)->delete();
+		$data = [
+			'_type' => '',
+			'_pid' => '0',
+			'_title' => '请分配该分类下的子分类'
+		];
+		$_data = Content::where('_id', $_id)->create($data);
+		Content::where('_pid', $_id)->update(['_pid' => $_data->_id]);
+		if ($re) {
+			$data = [
+				'status' => '0',
+				'msg' => '成功'
+			];
+		} else {
+			$data = [
+				'status' => '1',
+				'msg' => '失败'
+			];
+		}
+		return $data;
+	}
+	
+	
+	//get.admin/create/{create}  显示单个分类信息
+	public function show()
 	{
 	
 	}
