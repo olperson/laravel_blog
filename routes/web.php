@@ -33,3 +33,4 @@ Route::group(['middleware' => ['web', 'login'], 'prefix' => 'admin'], function (
 	Route::resource('/contents/index', Admin\CreateController::class);
 	Route::resource('/article/index', Admin\ArticleController::class);
 });
+Route::get('/imgs', [ImagesController::class, 'imgs']);
