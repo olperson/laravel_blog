@@ -88,6 +88,7 @@
                         <input type="text" class="sm" name="_order">
                         <span><i class="fa fa-exclamation-circle yellow"></i>必填</span>
                     </td>
+                </tr>
                 <tr>
                     <th></th>
                     <td>

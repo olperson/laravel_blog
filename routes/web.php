@@ -32,5 +32,6 @@ Route::group(['middleware' => ['web', 'login'], 'prefix' => 'admin'], function (
 	Route::any('/content/changeorder', [Admin\CreateController::class, 'order']);
 	Route::resource('/contents/index', Admin\CreateController::class);
 	Route::resource('/article/index', Admin\ArticleController::class);
+	Route::any('/upload',[Admin\ArticleController::class,'upload']);
 });
 Route::get('/imgs', [ImagesController::class, 'imgs']);

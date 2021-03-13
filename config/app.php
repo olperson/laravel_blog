@@ -161,10 +161,12 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
-        /*
-         * Package Service Providers...
-         */
+	    LaravelChen\Editormd\EditorMdProvider::class,
+	
+	
+	    /*
+		 * Package Service Providers...
+		 */
 
         /*
          * Application Service Providers...

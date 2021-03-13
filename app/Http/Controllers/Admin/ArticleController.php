@@ -17,10 +17,15 @@ class ArticleController extends Controller
 	//添加文章分类
 	public function create()
 	{
-		$data = [];
-		$_name = [];
-		return view('admin.article.add', compact('data', '_name'));
+		
+		$_name= (new Content())->tree();
+		return view('admin.article.add', compact( '_name'));
 		
 		
+	}
+	//引入markdown编辑器
+	public function upload()
+	{
+	return view('layouts.md.md');
 	}
 }
