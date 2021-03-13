@@ -81,7 +81,7 @@
                         <tr>
                             <th width="120">分类：</th>
                             <td>
-                                <select name="_id" class="selectpicker" multiple data-live-search=“true”>
+                                <select name="_id" class="selectpicker" data-live-search=“true”>
                                     @foreach($_name as $name)
                                         <option value="{{$name->_id}}">{{$name->_type}}</option>
                                     @endforeach
