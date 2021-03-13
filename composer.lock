@@ -1,20 +1,20 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "b31a1fb6350c23fe30e3324e468a4daf",
-    "packages": [
-        {
-            "name": "asm89/stack-cors",
-            "version": "v2.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/asm89/stack-cors.git",
-                "reference": "9cb795bf30988e8c96dd3c40623c48a877bc6714"
-            },
-            "dist": {
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "b12a7cebb09e83266dd6fb8f34cc884d",
+  "packages": [
+    {
+      "name": "asm89/stack-cors",
+      "version": "v2.0.3",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/asm89/stack-cors.git",
+        "reference": "9cb795bf30988e8c96dd3c40623c48a877bc6714"
+      },
+      "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/asm89/stack-cors/zipball/9cb795bf30988e8c96dd3c40623c48a877bc6714",
                 "reference": "9cb795bf30988e8c96dd3c40623c48a877bc6714",
@@ -2988,25 +2988,91 @@
                 "rss": "https://github.com/ramsey/uuid/releases.atom",
                 "source": "https://github.com/ramsey/uuid"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/ramsey",
-                    "type": "github"
-                }
-            ],
-            "time": "2020-08-18T17:17:46+00:00"
+          "funding": [
+            {
+              "url": "https://github.com/ramsey",
+              "type": "github"
+            }
+          ],
+          "time": "2020-08-18T17:17:46+00:00"
+        },
+    {
+      "name": "snapappointments/bootstrap-select",
+      "version": "v1.13.18",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/snapappointments/bootstrap-select.git",
+        "reference": "6c4c75f61e69ca54d5ab557a2b90ffdccf1c63cd"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/snapappointments/bootstrap-select/zipball/6c4c75f61e69ca54d5ab557a2b90ffdccf1c63cd",
+        "reference": "6c4c75f61e69ca54d5ab557a2b90ffdccf1c63cd",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
+      },
+      "suggest": {
+        "components/jquery": "1.9.1 - 3",
+        "twbs/bootstrap": ">=3.0.0"
+      },
+      "type": "library",
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Casey Holzer",
+          "homepage": "https://github.com/caseyjhol"
         },
         {
-            "name": "swiftmailer/swiftmailer",
-            "version": "v6.2.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "15f7faf8508e04471f666633addacf54c0ab5933"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/15f7faf8508e04471f666633addacf54c0ab5933",
+          "name": "Silvio Moreto",
+          "homepage": "https://github.com/silviomoreto"
+        },
+        {
+          "name": "SnapAppointments, LLC",
+          "homepage": "https://snapappointments.com"
+        }
+      ],
+      "description": "The jQuery plugin that brings select elements into the 21st century with intuitive multiselection, searching, and much more. Now with Bootstrap 4 support.",
+      "homepage": "https://developer.snapappointments.com/bootstrap-select",
+      "keywords": [
+        "bootstrap",
+        "dropdown",
+        "form",
+        "javascript",
+        "jquery",
+        "replacement",
+        "select"
+      ],
+      "support": {
+        "issues": "https://github.com/snapappointments/bootstrap-select/issues",
+        "source": "https://github.com/snapappointments/bootstrap-select/tree/v1.13.18"
+      },
+      "funding": [
+        {
+          "url": "https://github.com/caseyjhol",
+          "type": "github"
+        }
+      ],
+      "time": "2020-06-26T18:04:14+00:00"
+    },
+    {
+      "name": "swiftmailer/swiftmailer",
+      "version": "v6.2.7",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/swiftmailer/swiftmailer.git",
+        "reference": "15f7faf8508e04471f666633addacf54c0ab5933"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/15f7faf8508e04471f666633addacf54c0ab5933",
                 "reference": "15f7faf8508e04471f666633addacf54c0ab5933",
                 "shasum": "",
                 "mirrors": [
@@ -6346,26 +6412,90 @@
             ],
             "description": "Docker files for running a basic Laravel application.",
             "keywords": [
-                "docker",
-                "laravel"
+              "docker",
+              "laravel"
             ],
-            "support": {
-                "issues": "https://github.com/laravel/sail/issues",
-                "source": "https://github.com/laravel/sail"
-            },
-            "time": "2021-03-09T19:15:10+00:00"
+          "support": {
+            "issues": "https://github.com/laravel/sail/issues",
+            "source": "https://github.com/laravel/sail"
+          },
+          "time": "2021-03-09T19:15:10+00:00"
         },
-        {
-            "name": "mockery/mockery",
-            "version": "1.4.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mockery/mockery.git",
-                "reference": "d1339f64479af1bee0e82a0413813fe5345a54ea"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/d1339f64479af1bee0e82a0413813fe5345a54ea",
+      {
+        "name": "laravel/ui",
+        "version": "v3.0.0",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/laravel/ui.git",
+          "reference": "ff6af4f0bc5a5bfe73352cdc03dbfffc4ace92d8"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://api.github.com/repos/laravel/ui/zipball/ff6af4f0bc5a5bfe73352cdc03dbfffc4ace92d8",
+          "reference": "ff6af4f0bc5a5bfe73352cdc03dbfffc4ace92d8",
+          "shasum": "",
+          "mirrors": [
+            {
+              "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+              "preferred": true
+            }
+          ]
+        },
+        "require": {
+          "illuminate/console": "^8.0",
+          "illuminate/filesystem": "^8.0",
+          "illuminate/support": "^8.0",
+          "php": "^7.3"
+        },
+        "type": "library",
+        "extra": {
+          "branch-alias": {
+            "dev-master": "3.x-dev"
+          },
+          "laravel": {
+            "providers": [
+              "Laravel\\Ui\\UiServiceProvider"
+            ]
+          }
+        },
+        "autoload": {
+          "psr-4": {
+            "Laravel\\Ui\\": "src/",
+            "Illuminate\\Foundation\\Auth\\": "auth-backend/"
+          }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+          "MIT"
+        ],
+        "authors": [
+          {
+            "name": "Taylor Otwell",
+            "email": "taylor@laravel.com"
+          }
+        ],
+        "description": "Laravel UI utilities and presets.",
+        "keywords": [
+          "laravel",
+          "ui"
+        ],
+        "support": {
+          "issues": "https://github.com/laravel/ui/issues",
+          "source": "https://github.com/laravel/ui/tree/v3.0.0"
+        },
+        "time": "2020-09-11T15:34:08+00:00"
+      },
+      {
+        "name": "mockery/mockery",
+        "version": "1.4.3",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/mockery/mockery.git",
+          "reference": "d1339f64479af1bee0e82a0413813fe5345a54ea"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://api.github.com/repos/mockery/mockery/zipball/d1339f64479af1bee0e82a0413813fe5345a54ea",
                 "reference": "d1339f64479af1bee0e82a0413813fe5345a54ea",
                 "shasum": "",
                 "mirrors": [
