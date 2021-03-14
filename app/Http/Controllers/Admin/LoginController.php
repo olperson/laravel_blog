@@ -10,18 +10,20 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use MaxMind\Db\Reader;
+use MongoDB\Driver\Session;
 
 class LoginController extends Controller
 {
 	//后台登录界面
 	public function login(Request $request)
 	{
+
 		//判断session是否有用户数组
 		if (session('user') !== null) {
 			return redirect('admin/index');
 		}
 		if ($request->isMethod('post') != '') {
-			
+
 			//获取验证码的正确输入
 			$code = strtolower($request->session()->get('captchaSession'));
 			//获取用户输入的uid
@@ -35,14 +37,15 @@ class LoginController extends Controller
 			 * 条件判断用户是否输入有效内容
 			 */
 			if ($uid == '') {
-				return back()->with("error", "请输入用户名");
+				return back()->with("errors", "请输入用户名");
 			}
 			if ($passwd == '') {
-				return back()->with("error", "请输入用户名密码");
+				return back()->with("errors", "请输入用户名密码");
 			}
 			if ($captcha == '') {
-				return back()->with("error", "请输入不存在验证码");
+				return back()->with("errors", "请输入不存在验证码");
 			}
+
 			//从数据表中获取单一数列
 			$user = DB::table('user')->where('uid', $uid)->first();
 			// 验证验证码是否与存在session值一样
@@ -57,15 +60,14 @@ class LoginController extends Controller
 //                    $request->session()->put('adminUserInfo', ['name'=>$_uid, 'id'=>$user->id]);
 					return redirect('admin/index');
 				} else {
-					return back()->with("error", "好像登录失败了，重新登陆一下吧");
+					return back()->with("errors", "好像登录失败了，重新登陆一下吧");
 				}
 			} else {
-				return back()->with("error", "验证码输入不正确");
+				return back()->with("errors", "验证码输入不正确");
 			}
-			
 		}
 		
-		return view('admin.login');
+		return view('authentication.login');
 	}
 	
 	public function logout()
@@ -169,6 +171,11 @@ class LoginController extends Controller
 		$d = $c->passwd;
 		$d = Crypt::decrypt($d);
 		echo $d;
+	}
+
+    public function tt()
+    {
+        return view('authentication.login');
 	}
 	
 	
