@@ -60,8 +60,8 @@ class LoginController extends Controller
 //                    $request->session()->put('adminUserInfo', ['name'=>$_uid, 'id'=>$user->id]);
 					return redirect('admin/index');
 				} else {
-					return back()->with("errors", "好像登录失败了，重新登陆一下吧");
-				}
+                    return back()->with("errors", "登陆失败！-》参数错误");
+                }
 			} else {
 				return back()->with("errors", "验证码输入不正确");
 			}
@@ -147,11 +147,11 @@ class LoginController extends Controller
 				//解密passwd
 				$passwd = $user->passwd;
 				if ($o_passwd == Crypt::decrypt($passwd)) {
-					$passwd = Crypt::encrypt($_passwd);
+                    $passwd = Crypt::encrypt($_passwd);
 //                    dd($passwd);
-					DB::table('user')->where('uid', $uid)->update(['passwd' => $passwd]);
-					return back()->withErrors('修改成功，密码为：' . $_passwd);
-				} else {
+                    DB::table('user')->where('uid', $uid)->update(['passwd' => $passwd]);
+                    return back()->withErrors('修改成功！新密码为：' . $_passwd);
+                } else {
 					return back()->withErrors('密码输入错误');
 				}
 			} else {

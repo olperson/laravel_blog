@@ -66,27 +66,38 @@
                         <li class="{{ Request::segment(2) === 'validation' ? 'active' : null }}"><a href="{{route('forms.validation')}}">Form Validation</a></li>
                         <li class="{{ Request::segment(2) === 'wizard' ? 'active' : null }}"><a href="{{route('forms.wizard')}}">Form Wizard</a></li>
                         <li class="{{ Request::segment(2) === 'dragdropupload' ? 'active' : null }}"><a href="{{route('forms.dragdropupload')}}">Drag &amp; Drop Upload</a></li>
-                        <li class="{{ Request::segment(2) === 'cropping' ? 'active' : null }}"><a href="{{route('forms.cropping')}}">Image Cropping</a></li>
-                        <li class="{{ Request::segment(2) === 'summernote' ? 'active' : null }}"><a href="{{route('forms.summernote')}}">Summernote</a></li>
-                        <li class="{{ Request::segment(2) === 'editors' ? 'active' : null }}"><a href="{{route('forms.editors')}}">CKEditor</a></li>
-                        <li class="{{ Request::segment(2) === 'markdown' ? 'active' : null }}"><a href="{{route('forms.markdown')}}">Markdown</a></li>
+                        <li class="{{ Request::segment(2) === 'cropping' ? 'active' : null }}"><a
+                                    href="{{route('forms.cropping')}}">Image Cropping</a></li>
+                        <li class="{{ Request::segment(2) === 'summernote' ? 'active' : null }}"><a
+                                    href="{{route('forms.summernote')}}">Summernote</a></li>
+                        <li class="{{ Request::segment(2) === 'editors' ? 'active' : null }}"><a
+                                    href="{{route('forms.editors')}}">CKEditor</a></li>
+                        <li class="{{ Request::segment(2) === 'markdown' ? 'active' : null }}"><a
+                                    href="{{route('forms.markdown')}}">Markdown</a></li>
                     </ul>
                 </li>
                 <li class="{{ Request::segment(1) === 'tables' ? 'active' : null }}">
                     <a href="#Tables" class="has-arrow"><i class="fa fa-table"></i><span>Tables</span></a>
                     <ul>
-                        <li class="{{ Request::segment(2) === 'normal' ? 'active' : null }}"><a href="{{route('tables.normal')}}">Normal Tables</a></li>
-                        <li class="{{ Request::segment(2) === 'datatable' ? 'active' : null }}"><a href="{{route('tables.datatable')}}">Jquery Datatables</a></li>
-                        <li class="{{ Request::segment(2) === 'editable' ? 'active' : null }}"><a href="{{route('tables.editable')}}">Editable Tables</a></li>
-                        <li class="{{ Request::segment(2) === 'tablecolor' ? 'active' : null }}"><a href="{{route('tables.tablecolor')}}">Tables Color</a></li>
-                        <li class="{{ Request::segment(2) === 'filter' ? 'active' : null }}"><a href="{{route('tables.filter')}}">Table Filter</a></li>
-                        <li class="{{ Request::segment(2) === 'dragger' ? 'active' : null }}"><a href="{{route('tables.dragger')}}">Table dragger</a></li>
+                        <li class="{{ Request::segment(2) === 'normal' ? 'active' : null }}"><a
+                                    href="{{route('tables.normal')}}">Normal Tables</a></li>
+                        <li class="{{ Request::segment(2) === 'datatable' ? 'active' : null }}"><a
+                                    href="{{url('admin/contents/index')}}">Jquery Datatables</a></li>
+                        <li class="{{ Request::segment(2) === 'editable' ? 'active' : null }}"><a
+                                    href="{{route('tables.editable')}}">Editable Tables</a></li>
+                        <li class="{{ Request::segment(2) === 'tablecolor' ? 'active' : null }}"><a
+                                    href="{{route('tables.tablecolor')}}">Tables Color</a></li>
+                        <li class="{{ Request::segment(2) === 'filter' ? 'active' : null }}"><a
+                                    href="{{route('tables.filter')}}">Table Filter</a></li>
+                        <li class="{{ Request::segment(2) === 'dragger' ? 'active' : null }}"><a
+                                    href="{{route('tables.dragger')}}">Table dragger</a></li>
                     </ul>
                 </li>
                 <li class="{{ Request::segment(1) === 'charts' ? 'active' : null }}">
                     <a href="#charts" class="has-arrow"><i class="fa fa-pie-chart"></i><span>Charts</span></a>
                     <ul>
-                        <li class="{{ Request::segment(2) === 'apex' ? 'active' : null }}"><a href="{{route('charts.apex')}}">Apex Charts</a></li>
+                        <li class="{{ Request::segment(2) === 'apex' ? 'active' : null }}"><a
+                                    href="{{route('charts.apex')}}">Apex Charts</a></li>
                         <li class="{{ Request::segment(2) === 'c_chart' ? 'active' : null }}"><a href="{{route('charts.c_chart')}}">C3 Charts</a></li>
                         <li class="{{ Request::segment(2) === 'morris' ? 'active' : null }}"><a href="{{route('charts.morris')}}">Morris Charts</a></li>
                         <li class="{{ Request::segment(2) === 'flot' ? 'active' : null }}"><a href="{{route('charts.flot')}}">Flot Charts</a></li>

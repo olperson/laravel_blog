@@ -15,14 +15,14 @@
                     <ul class="nav navbar-nav">
 
                         <li class="dropdown hidden-xs">
-                            <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">Create</a>
+                            <a href="javascript:void(0);" class="dropdown-toggle icon-menu"
+                               data-toggle="dropdown">新建</a>
                             <div class="dropdown-menu pb-0 mt-0">
-                                <a class="dropdown-item pt-2 pb-2" href="javascript:void(0);">User</a>
-                                <a class="dropdown-item pt-2 pb-2" href="javascript:void(0);">Product</a>
-                                <a class="dropdown-item pt-2 pb-2" href="javascript:void(0);">Category</a>
-                                <a class="dropdown-item pt-2 pb-2" href="javascript:void(0);">Report</a>
+                                <a class="dropdown-item pt-2 pb-2" href="javascript:void(0);">分类</a>
+                                <a class="dropdown-item pt-2 pb-2" href="javascript:void(0);">文章</a>
                             </div>
                         </li>
+                        <li><a href="{{route('dashboard.repw')}}" class="icon-menu">修改密码</a></li>
                         <li class="dropdown hidden-xs">
                             <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
                                 <i class="fa fa-envelope-o"></i>
@@ -78,8 +78,10 @@
                         </li>
 
 
-                        <li class="hidden-xs"><a href="javascript:void(0);" id="btnFullscreen" class="icon-menu"><i class="fa fa-arrows-alt"></i></a></li>
-                        <li><a href="{{route('authentication.login')}}" class="icon-menu"><i class="fa fa-power-off"></i></a></li>
+                        <li class="hidden-xs"><a href="javascript:void(0);" id="btnFullscreen" class="icon-menu"><i
+                                        class="fa fa-arrows-alt"></i></a></li>
+                        <li><a href="{{route('dashboard.logout')}}" class="icon-menu"><i
+                                        class="fa fa-power-off"></i></a></li>
                     </ul>
                 </div>
             </div>

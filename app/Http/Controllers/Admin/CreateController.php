@@ -14,9 +14,11 @@ class CreateController extends Controller
 {
 	public function index()
 	{
-		$create = (new Content())->tree();
-		return view('admin.contents.index')->with('data', $create);
-	}
+        $create = (new Content())->tree();
+        return view('tables.datatable')->with('data', $create);
+
+
+    }
 	
 	public function order(Request $request)
 	{
@@ -73,9 +75,9 @@ class CreateController extends Controller
 			
 		}
 	}
-	
-	
-	//get.admin/create/create   添加分类
+
+
+    //get.admin/create/create   添加分类
 	public function create()
 	{
 		
@@ -105,8 +107,10 @@ class CreateController extends Controller
 	
 	//delete.admin/create/{create}   删除单个分类
 	public function destroy(Request $request, $_id)
-	{
-		$re = Content::where('_id', $_id)->delete();
+
+    {
+
+        $re = Content::where('_id', $_id)->delete();
 		$data = [
 			'_type' => '',
 			'_pid' => '0',

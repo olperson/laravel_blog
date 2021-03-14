@@ -26,10 +26,9 @@ Route::get('/test', [Admin\LoginController::class, 'test']);
 
 Route::group(['middleware' => ['web', 'login'], 'prefix' => 'admin'], function () {
     Route::get('/info', [Admin\IndexController::class, 'info']);
-    Route::get('/logout', [Admin\LoginController::class, 'logout']);
-    Route::match(['get', 'post'], '/passwdreset', [Admin\LoginController::class, 'passwdreset']);
+    Route::get('/logout', [Admin\LoginController::class, 'logout'])->name('dashboard.logout');
     Route::any('/content/changeorder', [Admin\CreateController::class, 'order']);
-    Route::resource('/contents/index', Admin\CreateController::class);
+//    Route::resource('/contents/index', Admin\CreateController::class);
     Route::resource('/article/index', Admin\ArticleController::class);
     Route::any('/upload', [Admin\ArticleController::class, 'upload']);
     //新增
@@ -37,6 +36,9 @@ Route::group(['middleware' => ['web', 'login'], 'prefix' => 'admin'], function (
     Route::get('cryptocurrency', [Admin\IndexController::class, 'cryptocurrency']);
     Route::get('ecommerce', [Admin\IndexController::class, 'ecommerce']);
     Route::get('dashindex', [Admin\IndexController::class, 'dashindex']);
+    Route::match(['get', 'post'], '/passwdreset', [Admin\LoginController::class, 'passwdreset'])->name('dashboard.repw');
+    //文章分类
+    Route::resource('/contents/index', Admin\CreateController::class);
 });
 Route::get('/imgs', [ImagesController::class, 'imgs']);
 Route::any('/login', [Admin\LoginController::class, 'tt']);
@@ -91,7 +93,6 @@ Route::get('forms/markdown', [FormsController::class,'markdown'])->name('forms.m
 
 /* Tables elements */
 Route::get('tables/normal', [TablesController::class,'normal'])->name('tables.normal');
-Route::get('tables/datatable', [TablesController::class,'datatable'])->name('tables.datatable');
 Route::get('tables/editable', [TablesController::class,'editable'])->name('tables.editable');
 Route::get('tables/tablecolor', [TablesController::class,'tablecolor'])->name('tables.tablecolor');
 Route::get('tables/filter', [TablesController::class,'filter'])->name('tables.filter');
