@@ -1049,7 +1049,7 @@ $.fn.markdown.defaults = {
             chunk = selected.text;
           }
 
-          link = prompt(e.__localize('Insert Hyperlink'),'http://');
+          link = prompt(e.__localize('请输入超链接地址'), 'http://');
 
           var urlRegex = new RegExp('^((http|https)://|(mailto:)|(//))[a-z0-9]', 'i');
           if (link !== null && link !== '' && link !== 'http://' && urlRegex.test(link)) {
@@ -1079,7 +1079,7 @@ $.fn.markdown.defaults = {
             chunk = selected.text;
           }
 
-          link = prompt(e.__localize('Insert Image Hyperlink'),'http://');
+            link = prompt(e.__localize('输入图片地址'), 'http://');
 
           var urlRegex = new RegExp('^((http|https)://|(//))[a-z0-9]', 'i');
           if (link !== null && link !== '' && link !== 'http://' && urlRegex.test(link)) {
