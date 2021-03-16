@@ -33,6 +33,7 @@ Route::group(['middleware' => ['web', 'login'], 'prefix' => 'admin'], function (
 //    Route::resource('/contents/index', Admin\CreateController::class);
 //	文章
 	Route::resource('/article/index', Admin\ArticleController::class);
+	Route::post('/article/search', [Admin\ArticleController::class, 'search']);
 	Route::any('/upload', [Admin\ArticleController::class, 'upload']);
 	//新增
 	Route::get('/index', [Admin\IndexController::class, 'index']);
@@ -43,6 +44,8 @@ Route::group(['middleware' => ['web', 'login'], 'prefix' => 'admin'], function (
 	//文章分类
 	Route::resource('/contents/index', Admin\CreateController::class);
 });
+///前台信息显示
+Route::get('/blog', [Admin\ArticleController::class, 'test']);
 Route::get('/imgs', [ImagesController::class, 'imgs']);
 Route::any('/login', [Admin\LoginController::class, 'tt']);
 

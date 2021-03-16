@@ -1,8 +1,8 @@
-<nav class="navbar navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-left">
-                <div class="navbar-btn">
-                    <a href="index.html"><img src="{{ asset('assets/images/icon.svg') }}" alt="Mooli Logo" class="img-fluid logo"></a>
+<nav class="navbar navbar-fixed-top" style="z-index: 100">
+    <div class="container-fluid">
+        <div class="navbar-left">
+            <div class="navbar-btn">
+                <a href="index.html"><img src="{{ asset('assets/images/icon.svg') }}" alt="Mooli Logo" class="img-fluid logo"></a>
                     <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-align-left"></i></button>
                 </div>
                 <form id="navbar-search" class="navbar-form search-form">

@@ -11,18 +11,21 @@ use Illuminate\Support\Facades\DB;
 class ArticleController extends Controller
 {
 	//全部文章列表
-	public function index()
+	public function index(Request $request)
 	{
 		$arts = DB::table('article')->orderBy('art_id', 'desc')->get();
-		return view('apps.inbox', compact('arts'));
+		$input = $request->art_title;
+		$result = DB::table('article')->where('art_title', 'like', "%{$input}%")->get();
+		return view('apps.inbox', compact('result', 'arts'));
 	}
 	
 	//添加文章分类
 	public function create()
 	{
 		
-		$_name = (new Content())->tree();
-		return view('admin.article.add', compact('_name'));
+		$_name = Content::all();
+		$content = Content::where('_pid', '>', '0')->get();
+		return view('admin.article.add', compact('content', '_name'));
 		
 		
 	}
@@ -31,7 +34,6 @@ class ArticleController extends Controller
 	public function store(Request $request)
 	{
 		$input = $request->except('_token');
-		
 		if (empty($input['art_thumb'])) {
 			$input['art_thumb'] = 'http://blog.com/imgs?type=img';
 		}
@@ -80,5 +82,44 @@ class ArticleController extends Controller
 			];
 		}
 		return $data;
+	}
+	
+	public function search(Request $request)
+	{
+		$input = $request->art_title;
+		$result = DB::table('article')->where('art_title', 'like', "%{$input}%")->get();
+		return view('apps.inbox', compact('result'));
+	}
+	
+	//修改文章
+	public function edit($art_id)
+	{
+		$_name = Content::all();
+		$content = Content::where('_pid', '>', '0')->get();
+		$_content = Article::find($art_id);
+		return view('admin.article.edit', compact('content', '_content', '_name'));
+	}
+	
+	public function update(Request $request, $art_id)
+	{
+		$input = $request->except('_token', '_method');
+		$re = Article::where('art_id', $art_id)->update($input);
+		if ($re) {
+			return back()->with('errors', '更新成功!');
+		} else {
+			return back()->with('errors', '更新数据失败！');
+		}
+	}
+	
+	public function upload()
+	{
+		return view('admin.markdown');
+	}
+	
+	public function test()
+	{
+		$data = Article::where('art_id', '21')->first();
+		$re = $data['editormd_id-html-code'];
+		return view('pages.blank', compact('re'));
 	}
 }

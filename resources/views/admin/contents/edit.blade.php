@@ -77,9 +77,10 @@
                     </td>
                 </tr>
                 <tr>
+                    {{--                    tag--}}
                     <th>详细内容：</th>
                     <td>
-                        <textarea class="lg" name="_description" value="{{$content->_description}}"></textarea>
+                        <textarea class="lg" name="_description" value="">{{$content->_description}}</textarea>
                     </td>
                 </tr>
                 <tr>

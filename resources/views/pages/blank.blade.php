@@ -38,6 +38,7 @@
             </div>
             <div class="body">
                 <h4>Stater Page</h4>
+{!! $re !!}
             </div>
         </div>
     </div>
@@ -46,13 +47,16 @@
 @stop
 
 @section('page-styles')
-<link rel="stylesheet" href="{{ asset('') }}">
+    <link rel="stylesheet" href="{{ asset('') }}">
+    {!! editor_css() !!}
 @stop
 
 @section('vendor-script')
-<script src="{{ asset('') }}"></script>
+    <script src="{{ asset('') }}"></script>
+
+    {!! editor_js() !!}
 @stop
 
 @section('page-script')
-<script src="{{ asset('') }}"></script>
+    <script src="{{ asset('') }}"></script>
 @stop

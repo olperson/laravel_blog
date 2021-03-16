@@ -97,6 +97,7 @@ class CreateController extends Controller
 	public function update(Request $request, $_id)
 	{
 		$input = $request->except('_token', '_method');
+		dd($input);
 		$re = Content::where('_id', $_id)->update($input);
 		if ($re) {
 			return back()->with('errors', '更新成功!');

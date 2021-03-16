@@ -42,13 +42,18 @@
                     {{--                    </li>--}}
                     {{--                </ul>--}}
                     <div class="ml-auto">
-                        <form>
+                        <form action="{{url('admin/article/index')}}" method="get">
+                            {{csrf_field()}}
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Mail"
+                                <input required name="art_title" type="text" class="form-control" placeholder="搜索文章标题"
                                        aria-label="Search Mail" aria-describedby="search-mail">
                                 <div class="input-group-append">
-                                    <span class="input-group-text" id="search-mail"><i
-                                                class="icon-magnifier"></i></span>
+                                    <button class="input-group-text" id="search-mail"><i
+                                                class="icon-magnifier"></i>
+                                    </button>
+
+                                    <a title="返回" href="{{url('admin/article/index')}}" class="input-group-text">
+                                        <i class="fa fa-undo"></i></a>
                                 </div>
                             </div>
                         </form>
@@ -85,8 +90,7 @@
                                     </label>
                                 </div>
                                 <a href="javascript:void(0);" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                                <a href="javascript:void(0);" class="btn btn-default btn-sm hidden-sm"><i
-                                            class="fa fa-refresh"></i></a>
+
                                 <div class="btn-group">
                                     <button class="btn btn-default btn-sm dropdown-toggle" type="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
@@ -112,58 +116,116 @@
                         </div>
                         <div class="tab-content">
 
-
                             {{--                            已发布开始--}}
                             <div class="tab-pane show active" id="Home-withicon">
                                 <ul class="mail-list list-unstyled">
-                                    @foreach($arts as $v)
-                                        <li>
+                                    @if(!empty($result))
+                                        @foreach($result as $v)
+                                            <li>
 
-                                            <div class="md-left">
-                                                <label class="fancy-checkbox">
-                                                    <input type="checkbox" name="checkbox" class="checkbox-tick">
-                                                    <span></span>
-                                                </label>
-                                                <a href="javascript:void(0);" class="mail-star active"><i
-                                                            class="fa fa-star"></i></a>
-                                            </div>
-                                            <div>
+                                                <div class="md-left">
+                                                    <label class="fancy-checkbox">
+                                                        <input type="checkbox" name="checkbox" class="checkbox-tick">
+                                                        <span></span>
+                                                    </label>
+                                                    <a href="javascript:void(0);" class="mail-star active"><i
+                                                                class="fa fa-star"></i></a>
+                                                </div>
+                                                <div>
 
-                                                <div class="form-group c_form_group ">
-                                                    <div class="title"><a><b>{{$v->art_title}}</b></a>
-                                                        {{--                        tag input开始--}}
-                                                        <input onchange="changetags(this,{{$v->art_id}})" name="art_tag"
-                                                               type="text" class="form-control" data-role="tagsinput"
-                                                               value="{{$v->art_tag}}">
+                                                    <div class="form-group c_form_group ">
+                                                        <div class="title"><a><b>{{$v->art_title}}</b></a>
+                                                            {{--                        tag input开始--}}
+                                                            <input onchange="changetags(this,{{$v->art_id}})"
+                                                                   name="art_tag"
+                                                                   type="text" class="form-control"
+                                                                   data-role="tagsinput"
+                                                                   value="{{$v->art_tag}}">
 
 
-                                                        {{--                        tags input 结束--}}
-                                                    </div>
+                                                            {{--                        tags input 结束--}}
+                                                        </div>
 
-                                                    <p class="dep"><span class="msg">{{$v->art_content}}</span></p>
-                                                    <hr/>
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-md-12 col-lg-6">
-                                                                <span class="time">{{date('Y年m月d日 H时i分',$v->art_time)}}</span>
-                                                                <span class="time"><h6><i
-                                                                                class="fas  icon-eyeglasses">:{{$v->art_view}}</i></h6></span>
-                                                            </div>
-                                                            <div class="col-md-12 col-lg-6">
+                                                        <p class="dep"><span class="msg">{{$v->art_content}}</span></p>
+                                                        <hr/>
+                                                        <div class="container-fluid">
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-lg-6">
+                                                                    <span class="time">{{date('Y年m月d日 H时i分',$v->art_time)}}</span>
+                                                                    <span class="time"><h6><i
+                                                                                    class="fas  icon-eyeglasses">:{{$v->art_view}}</i></h6></span>
+                                                                </div>
+                                                                <div class="col-md-12 col-lg-6">
                                                         <span class="time float-right">
-                                                <button onclick="" type="button" class="btn btn-sm btn-default"
+                                                <button onclick="window.open('{{url('admin/article/index/'.$v->art_id.'/edit')}}')"
+                                                        type="button" class="btn btn-sm btn-default"
                                                         title="编辑"><i
                                                             class="fa fa-edit"></i></button>
                                         <button onclick="del({{$v->art_id}})" data-type="ajax-loader" type="button"
                                                 class="btn btn-sm btn-danger" title="删除"><i
                                                     class="fa fa-trash"></i></button></span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
+                                            </li>
+                                        @endforeach
+                                    @else
+                                        @foreach($arts as $v)
+                                            <li>
+
+                                                <div class="md-left">
+                                                    <label class="fancy-checkbox">
+                                                        <input type="checkbox" name="checkbox" class="checkbox-tick">
+                                                        <span></span>
+                                                    </label>
+                                                    <a href="javascript:void(0);" class="mail-star active"><i
+                                                                class="fa fa-star"></i></a>
+                                                </div>
+                                                <div>
+
+                                                    <div class="form-group c_form_group ">
+                                                        <div class="title"><a><b>{{$v->art_title}}</b></a>
+                                                            {{--                        tag input开始--}}
+                                                            <input onchange="changetags(this,{{$v->art_id}})"
+                                                                   name="art_tag"
+                                                                   type="text" class="form-control"
+                                                                   data-role="tagsinput"
+                                                                   value="{{$v->art_tag}}">
+
+
+                                                            {{--                        tags input 结束--}}
+                                                        </div>
+
+                                                        <p class="dep"><span class="msg">{{$v->art_content}}</span></p>
+                                                        <hr/>
+                                                        <div class="container-fluid">
+                                                            <div class="row">
+                                                                <div class="col-md-12 col-lg-6">
+                                                                    <span class="time">{{date('Y年m月d日 H时i分',$v->art_time)}}</span>
+                                                                    <span class="time"><h6><i
+                                                                                    class="fas  icon-eyeglasses">:{{$v->art_view}}</i></h6></span>
+                                                                </div>
+                                                                <div class="col-md-12 col-lg-6">
+                                                        <span class="time float-right">
+                                                <button onclick="window.open('{{url('admin/article/index/'.$v->art_id.'/edit')}}')"
+                                                        type="button" class="btn btn-sm btn-default"
+                                                        title="编辑"><i
+                                                            class="fa fa-edit"></i></button>
+                                        <button onclick="del({{$v->art_id}})" data-type="ajax-loader" type="button"
+                                                class="btn btn-sm btn-danger" title="删除"><i
+                                                    class="fa fa-trash"></i></button></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    @endif
+
+
                                 </ul>
                             </div>
                             {{--                            已发布结束--}}

@@ -21,14 +21,17 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="body">
-                    <form action="{{url('/admin/article/index')}}" id="basic-form" method="post" novalidate>
+                    <form action="{{url('/admin/article/index/'.$_content->art_id)}}" id="basic-form" method="post"
+                          novalidate>
+                        <input type="hidden" name="_method" value="put">
                         {{csrf_field()}}
                         @if(!empty(session('errors')))
                             <div class="alert alert-warning" role="alert">{{session('errors')}}</div>
                         @endif
                         <div class="form-group c_form_group ">
                             <label>文章标题</label>
-                            <input name="art_title" type="text" class="form-control" required>
+                            <input value="{{$_content->art_title}}" name="art_title" type="text" class="form-control"
+                                   required>
                         </div>
                         <div class="c_form_group">
                             <div class="row clearfix">
@@ -38,7 +41,8 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="icon-user"></i></span>
                                         </div>
-                                        <input name="art_editor" type="text" class="form-control" required
+                                        <input value="{{$_content->art_editor}}" name="art_editor" type="text"
+                                               class="form-control" required
                                                placeholder="admin">
                                     </div>
                                 </div>
@@ -50,7 +54,7 @@
                                             <span class="input-group-text"><i class="icon-picture"></i></span>
                                         </div>
                                         <input name="art_thumb" type="text" class="form-control"
-                                               placeholder="http(s)://">
+                                               value="{{$_content->art_thumb}}">
                                     </div>
                                 </div>
                             </div>
@@ -63,16 +67,21 @@
                                     <span class="input-group-text"><i class="icon-directions"></i></span>
                                 </div>
                                 <input name="art_description" type="text" class="form-control"
-                                       placeholder="留空自动截取文章前55个字">
+                                       placeholder="留空自动截取文章前55个字" value="{{$_content->art_description}}">
                             </div>
                         </div>
                         {{--                    markdown开始--}}
-                        <p class="margin-bottom-30">Markdown编辑器</p>
-                        <div>
-                            <div id="editormd_id" style="z-index: 10">
-                                <textarea name="art_content"></textarea>
+
+                        <div class="form-group c_form_group">
+                            <p class="margin-bottom-30">Markdown编辑器</p>
+                            <div>
+                                <div id="editormd_id">
+                                    <textarea name="art_content" rows="20">{{$_content->art_content}}</textarea>
+                                </div>
                             </div>
+
                         </div>
+
 
                         {{--                    markdown结束--}}
                         {{--                        tag input开始--}}
@@ -97,7 +106,10 @@
                                             <optgroup label="{{$name->_type}}">
                                                 @foreach($content as $m)
                                                     @if($m->_pid==$name->_id)
-                                                        <option value="{{$m->_id}}">
+                                                        <option value="{{$m->_id}}"
+                                                                @if($_content->pid==$m->_id)
+                                                                selected
+                                                                @endif>
                                                             {{$m->_type}}
                                                         </option>
                                                     @endif
@@ -122,6 +134,7 @@
 @stop
 
 @section('page-styles')
+
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-markdown/bootstrap-markdown.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/parsleyjs/css/parsley.css') }}">
@@ -130,13 +143,11 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert/sweetalert.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/nouislider/nouislider.min.css') }}">
 
+    {!! editor_css() !!}
+
 @stop
 
 @section('vendor-script')
-
-    {!! editor_css() !!}
-
-    {!!editor_js()!!}
     <script src="{{ asset('assets/vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.js') }}"></script>
     <script src="{{ asset('assets/vendor/jquery.maskedinput/jquery.maskedinput.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/markdown/markdown.js') }}"></script>
@@ -166,5 +177,30 @@
     </script>
 
     <script src="{{ asset('assets/js/pages/forms/advanced-form-elements.js') }}"></script>
+
+    <script>
+        $(function () {
+            // markdown editor
+            var initContent = '<h4>Hello there</h4> ' +
+                '<p>How are you? I have below task for you :</p> ' +
+                '<p>Select from this text... Click the bold on THIS WORD and make THESE ONE italic, ' +
+                'link GOOGLE to google.com, ' +
+                'test to insert image (and try to tab after write the image description)</p>' +
+                '<p>Test Preview And ending here...</p> ' +
+                '<p>Click "List"</p> Enjoy!';
+
+            $('#markdown-editor').text(toMarkdown(initContent));
+        });
+        $(function () {
+            // validation needs name of the element
+            $('#food').multiselect();
+
+            // initialize after multiselect
+            $('#basic-form').parsley();
+        });
+    </script>
+
     <script src="{{ asset('assets/js/pages/ui/dialogs.js') }}"></script>
+
+    {!! editor_js() !!}
 @stop

@@ -1,4 +1,4 @@
-<div id="left-sidebar" class="sidebar">
+<div id="left-sidebar" class="sidebar" style="z-index: 200">
     <a href="javascript:void(0);" class="menu_toggle"><i class="fa fa-angle-left"></i></a>
     <div class="navbar-brand">
         <a href="{{route('dashboard.index')}}"><img src="{{ asset('assets/images/icon.svg') }}" alt="Mooli Logo" class="img-fluid logo"><span>Mooli</span></a>
@@ -11,31 +11,48 @@
             </div>
             <div class="dropdown">
                 <span>Web Developer,</span>
-                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>Alan Green</strong></a>
+                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>Alan
+                        Green</strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
                     <li><a href="{{route('pages.profile')}}"><i class="fa fa-user"></i>My Profile</a></li>
-                    <li><a href="{{route('apps.inbox')}}"><i class="fa fa-envelope"></i>Messages</a></li>
+                    <li><a href="{{url('apps.inbox')}}"><i class="fa fa-envelope"></i>Messages</a></li>
                     <li><a href="{{route('pages.settings')}}"><i class="fa fa-gear"></i>Settings</a></li>
                     <li class="divider"></li>
                     <li><a href="{{route('authentication.login')}}"><i class="fa fa-power-off"></i>Logout</a></li>
                 </ul>
             </div>
-        </div>  
+        </div>
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul id="main-menu" class="metismenu animation-li-delay">
                 <li class="header">Main</li>
-                <li class="{{ Request::segment(1) === 'dashboard' ? 'active' : null }}"><a href="{{route('dashboard.index')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                
+                <li class="{{ Request::segment(1) === 'dashboard' ? 'active' : null }}"><a
+                            href="{{route('dashboard.index')}}"><i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span></a></li>
+
                 <li class="header">Apps</li>
-                <li class="{{ Request::segment(2) === 'inbox' ? 'active' : null }}"><a href="{{route('apps.inbox')}}"><i class="fa fa-envelope"></i> <span>Email</span> <span class="badge badge-default mr-0">12</span></a></li>
-                <li class="{{ Request::segment(2) === 'chat' ? 'active' : null }}"><a href="{{route('apps.chat')}}"><i class="fa fa-comments"></i> <span>Chat</span></a></li>
-                <li class="{{ Request::segment(2) === 'apps' ? 'active' : null }}"><a href="{{route('apps.calendar')}}"><i class="fa fa-calendar"></i> <span>Calendar</span></a></li>
-                <li class="{{ Request::segment(2) === 'todolist' ? 'active' : null }}"><a href="{{route('apps.todolist')}}"><i class="fa fa-th-list"></i> <span>Todo List</span></a></li>
-                <li class="{{ Request::segment(2) === 'filemanager' ? 'active' : null }}"><a href="{{route('apps.filemanager')}}"><i class="fa fa-folder"></i> <span>File Manager</span></a></li>
-                <li class="{{ Request::segment(2) === 'contacts' ? 'active' : null }}"><a href="{{route('apps.contacts')}}"><i class="fa fa-address-book"></i> <span>Contacts</span></a></li>
-                <li class="{{ Request::segment(2) === 'scrumboard' ? 'active' : null }}"><a href="{{route('apps.scrumboard')}}"><i class="fa fa-tasks"></i> <span>Scrumboard</span></a></li>
-                <li class="{{ Request::segment(2) === 'blog' ? 'active' : null }}"><a href="{{route('apps.blog')}}"><i class="fa fa-globe"></i> <span>Blog</span></a></li>
-                <li class="{{ Request::segment(2) === 'social' ? 'active' : null }}"><a href="{{route('apps.social')}}"><i class="fa fa-share-alt-square"></i> <span>Social</span></a></li>
+                <li class="{{ Request::segment(2) === 'inbox' ? 'active' : null }}"><a
+                            href="{{url('admin/article/index')}}"><i class="fa fa-envelope"></i> <span>Email</span>
+                        <span class="badge badge-default mr-0">12</span></a></li>
+                <li class="{{ Request::segment(2) === 'chat' ? 'active' : null }}"><a href="{{route('apps.chat')}}"><i
+                                class="fa fa-comments"></i> <span>Chat</span></a></li>
+                <li class="{{ Request::segment(2) === 'apps' ? 'active' : null }}"><a href="{{route('apps.calendar')}}"><i
+                                class="fa fa-calendar"></i> <span>Calendar</span></a></li>
+                <li class="{{ Request::segment(2) === 'todolist' ? 'active' : null }}"><a
+                            href="{{route('apps.todolist')}}"><i class="fa fa-th-list"></i> <span>Todo List</span></a>
+                </li>
+                <li class="{{ Request::segment(2) === 'filemanager' ? 'active' : null }}"><a
+                            href="{{route('apps.filemanager')}}"><i class="fa fa-folder"></i> <span>File Manager</span></a>
+                </li>
+                <li class="{{ Request::segment(2) === 'contacts' ? 'active' : null }}"><a
+                            href="{{route('apps.contacts')}}"><i class="fa fa-address-book"></i>
+                        <span>Contacts</span></a></li>
+                <li class="{{ Request::segment(2) === 'scrumboard' ? 'active' : null }}"><a
+                            href="{{route('apps.scrumboard')}}"><i class="fa fa-tasks"></i> <span>Scrumboard</span></a>
+                </li>
+                <li class="{{ Request::segment(2) === 'blog' ? 'active' : null }}"><a href="{{route('apps.blog')}}"><i
+                                class="fa fa-globe"></i> <span>Blog</span></a></li>
+                <li class="{{ Request::segment(2) === 'social' ? 'active' : null }}"><a href="{{route('apps.social')}}"><i
+                                class="fa fa-share-alt-square"></i> <span>Social</span></a></li>
 
                 <li class="header">Vendors</li>
                 <li class="{{ Request::segment(1) === 'elements' ? 'active' : null }}">
@@ -53,19 +70,27 @@
                         <li class="{{ Request::segment(2) === 'listgroup' ? 'active' : null }}"><a href="{{route('elements.listgroup')}}">List Group</a></li>
                         <li class="{{ Request::segment(2) === 'mediaobject' ? 'active' : null }}"><a href="{{route('elements.mediaobject')}}">Media Object</a></li>
                         <li class="{{ Request::segment(2) === 'modals' ? 'active' : null }}"><a href="{{route('elements.modals')}}">Modals</a></li>
-                        <li class="{{ Request::segment(2) === 'nestable' ? 'active' : null }}"><a href="{{route('elements.nestable')}}">Nestable</a></li>
-                        <li class="{{ Request::segment(2) === 'progressbars' ? 'active' : null }}"><a href="{{route('elements.progressbars')}}">Progress Bars</a></li>
-                        <li class="{{ Request::segment(2) === 'rangesliders' ? 'active' : null }}"><a href="{{route('elements.rangesliders')}}">Range Sliders</a></li>
+                        <li class="{{ Request::segment(2) === 'nestable' ? 'active' : null }}"><a
+                                    href="{{route('elements.nestable')}}">Nestable</a></li>
+                        <li class="{{ Request::segment(2) === 'progressbars' ? 'active' : null }}"><a
+                                    href="{{route('elements.progressbars')}}">Progress Bars</a></li>
+                        <li class="{{ Request::segment(2) === 'rangesliders' ? 'active' : null }}"><a
+                                    href="{{route('elements.rangesliders')}}">Range Sliders</a></li>
                     </ul>
                 </li>
                 <li class="{{ Request::segment(1) === 'forms' ? 'active' : null }}">
                     <a href="#forms" class="has-arrow"><i class="fa fa-pencil"></i><span>Forms Elements</span></a>
                     <ul>
-                        <li class="{{ Request::segment(2) === 'formsbasic' ? 'active' : null }}"><a href="{{route('forms.formsbasic')}}">Basic Elements</a></li>
-                        <li class="{{ Request::segment(2) === 'advanced' ? 'active' : null }}"><a href="{{route('forms.advanced')}}">Advanced Elements</a></li>
-                        <li class="{{ Request::segment(2) === 'validation' ? 'active' : null }}"><a href="{{route('forms.validation')}}">Form Validation</a></li>
-                        <li class="{{ Request::segment(2) === 'wizard' ? 'active' : null }}"><a href="{{route('forms.wizard')}}">Form Wizard</a></li>
-                        <li class="{{ Request::segment(2) === 'dragdropupload' ? 'active' : null }}"><a href="{{route('forms.dragdropupload')}}">Drag &amp; Drop Upload</a></li>
+                        <li class="{{ Request::segment(2) === 'formsbasic' ? 'active' : null }}"><a
+                                    href="{{route('forms.formsbasic')}}">Basic Elements</a></li>
+                        <li class="{{ Request::segment(2) === 'advanced' ? 'active' : null }}"><a
+                                    href="{{route('forms.advanced')}}">Advanced Elements</a></li>
+                        <li class="{{ Request::segment(2) === 'validation' ? 'active' : null }}"><a
+                                    href="{{url('admin/article/index/create')}}">Form Validation</a></li>
+                        <li class="{{ Request::segment(2) === 'wizard' ? 'active' : null }}"><a
+                                    href="{{route('forms.wizard')}}">Form Wizard</a></li>
+                        <li class="{{ Request::segment(2) === 'dragdropupload' ? 'active' : null }}"><a
+                                    href="{{route('forms.dragdropupload')}}">Drag &amp; Drop Upload</a></li>
                         <li class="{{ Request::segment(2) === 'cropping' ? 'active' : null }}"><a
                                     href="{{route('forms.cropping')}}">Image Cropping</a></li>
                         <li class="{{ Request::segment(2) === 'summernote' ? 'active' : null }}"><a
