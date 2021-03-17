@@ -48,7 +48,7 @@ Route::group(['middleware' => ['web', 'login'], 'prefix' => 'admin'], function (
 Route::get('/blog', [Admin\ArticleController::class, 'test']);
 Route::get('/imgs', [ImagesController::class, 'imgs']);
 Route::any('/login', [Admin\LoginController::class, 'tt']);
-
+Route::resource('/link', Admin\LinkController::class);
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::get('dashboard/cryptocurrency', [DashboardController::class, 'cryptocurrency'])->name('dashboard.cryptocurrency');
